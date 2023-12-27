@@ -25,13 +25,21 @@ var arr = [
     }
 
 ]
-
+var storiyan = document.querySelector("#storiyan");
 var clutter = "";
 
 arr.forEach(function(data,ind){
     clutter += ` <div class="story">
-    <img src="${data.profilePicture}">
+    <img id="${ind}" src="${data.profilePicture}">
     </div>`;
 })
 
 document.querySelector("#storiyan").innerHTML = clutter;
+storiyan.addEventListener("click",(dets)=>{
+    document.querySelector("#full-screen").style.display = "block";
+    document.querySelector("#full-screen").style.backgroundImage = `url(${arr[dets.target.id].story})`;
+
+    setTimeout(()=>{
+        document.querySelector("#full-screen").style.display = "none";
+    },2000)
+})
